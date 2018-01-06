@@ -13,7 +13,7 @@ class Order extends React.Component {
 
     if (!fish || fish.status === 'unavailable') {
       return (
-        <li key={key}>Sorry, {fish.name} is no longer available!</li>
+        <li key={key}>Sorry, {fish ? fish.name : ''} is no longer available!</li>
       )
     }
     return (
@@ -42,7 +42,7 @@ class Order extends React.Component {
       <div className="order-wrap">
         <h2>Your Order</h2>
         <ul className="order">
-          {orderIds.map(key => this.renderOrder(key))}
+          { orderIds.map(key => this.renderOrder(key)) }
           <li className="total">
             <strong>Total:</strong>
             { formatPrice(total) }
